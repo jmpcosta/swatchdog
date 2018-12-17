@@ -51,7 +51,7 @@ int main( int argc, char * argv[] )
 
 	 service.hibernate();							// Wait until the OS Service Manager asks for service to terminate
 
-	 //service.shutdown();							// Perform a clean shutdown of self
+	 service.shutdown();							// Perform a clean shutdown of self
 
    }
 

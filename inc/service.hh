@@ -40,11 +40,6 @@ using namespace std;
 class systemService
 {
 public:
-	// delete copy and move constructors and assign operators
-	systemService( systemService const& ) 				= delete;		// Copy construct
-	systemService( systemService&& ) 					= delete;		// Move construct
-	systemService& operator=( systemService const& )	= delete; 		// Copy assign
-	systemService& operator=( systemService && )		= delete;		// Move assign
 
 	static	systemService & 	getService();
 
@@ -55,11 +50,16 @@ public:
 			void 				hibernate();
 			void 				shutdown();
 
-								~systemService();
+	// delete copy and move constructors and assign operators
+	systemService( systemService const& ) 				= delete;		// Copy construct
+	systemService( systemService&& ) 					= delete;		// Move construct
+	systemService& operator=( systemService const& )	= delete; 		// Copy assign
+	systemService& operator=( systemService && )		= delete;		// Move assign
 
 private:
 
 	// Instance methods
+								~systemService();
 								systemService();
 			void				initLog();
 			void				waitForWork();

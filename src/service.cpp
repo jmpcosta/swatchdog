@@ -16,8 +16,9 @@
 // *****************************************************************************************
 
 // Import C++ system headers
-#include <string>
 #include <iostream>
+#include <string>
+
 
 // Import OSAPI+ headers
 #include "osapi.hh"
@@ -74,6 +75,7 @@ systemService::~systemService()
 { serviceActive = false; }
 
 
+
 void systemService::readConfiguration( int argc, char * argv[] )
 {
  cerr << "Name of configuration:" << configurationName << endl;
@@ -101,7 +103,7 @@ void systemService::initLog( void )
 	  configuration		* p_conf = nullptr;
 	  configurationItem * p_item = nullptr;
 
-	  if( ! ConfigurationProvider::getProvider().getConfiguration( configurationName, & p_conf ) )
+	  if( ConfigurationProvider::getProvider().getConfiguration( configurationName, & p_conf ) )
 	    {
 		  step++;
 		  // If there is source name provided, use it
@@ -177,9 +179,9 @@ void systemService::boot( void )
   confirmRunConditions();		// Ensures that the system meets the runtime pre-conditions
 
   secureEnvironment();			// Sets a secure runtime environment
-
-  plug();
 */
+  plug();
+
   log.info( MESSAGE_BOOT );
 }
 
@@ -199,19 +201,21 @@ void systemService::hibernate()
  Log & log = Log::getLog();
 
  serviceActive = true;
- while( serviceActive == true )
+ while( serviceActive )
+      {
+	 	log.info( MESSAGE_PAUSE );
 	    waitForWork();
-
- log.info( MESSAGE_PAUSE );
+      }
 }
 
 void systemService::shutdown()
 {
  Log & log = Log::getLog();
-/*
+
  unplug();
- serviceMutex.unlock();					// Remove lock before shutting down
-*/
+
+ //serviceMutex.unlock();					// Remove lock before shutting down
+
  log.info( MESSAGE_SHUTDOWN );
 
  log.close();

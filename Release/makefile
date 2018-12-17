@@ -38,19 +38,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: OSService
+all: hasis
 
 # Tool invocations
-OSService: $(OBJS) $(USER_OBJS)
+hasis: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++ -L"/home/joao/workspace/osapi_plus/Release" -L"/home/joao/workspace/osapi/Release" -p -pg -ftest-coverage -fprofile-arcs -o "OSService" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -L"/home/joao/workspace/osapi_plus/Release" -L"/home/joao/workspace/osapi/Release" -p -pg -ftest-coverage -fprofile-arcs -o "hasis" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(C_UPPER_DEPS)$(CXX_DEPS)$(OBJS)$(CPP_DEPS)$(C_DEPS) OSService
+	-$(RM) $(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(C_UPPER_DEPS)$(CXX_DEPS)$(OBJS)$(CPP_DEPS)$(C_DEPS) hasis
 	-@echo ' '
 
 .PHONY: all clean dependents
