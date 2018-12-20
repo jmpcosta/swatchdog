@@ -24,7 +24,8 @@
 #include "osapi.hh"
 
 // Import project headers
-#include "unix_defs.hh"
+#include "platform_defs.hh"
+#include "platform_service.hh"
 
 // Import own headers
 #include "service_defs.hh"
@@ -78,9 +79,6 @@ systemService::~systemService()
 
 void systemService::readConfiguration( int argc, char * argv[] )
 {
- cerr << "Name of configuration:" << configurationName << endl;
- cerr << "Number of received arguments:" << argc << endl;
-
  if( argc > 1 )
    {
 	 string filename( argv[1] );
@@ -185,6 +183,47 @@ void systemService::boot( void )
   log.info( MESSAGE_BOOT );
 }
 
+
+void systemService::waitForWork( void )
+{
+ Log & log = Log::getLog();
+
+ log.debug( "Entering wait for work." );
+
+ process::getCurrent().suspend();
+
+ // If the process was resumed, update my state
+ serviceActive = service::getState();
+
+ log.debug( "Leaving wait for work." );
+}
+
+
+void systemService::plug()
+{
+  Log & log = Log::getLog();
+
+  log.debug( "Start plugging into the OS service manager." );
+
+  // Set handler for process signals
+  service::registerCallback();
+
+  // Setup as a system service
+  service::create();
+
+  log.debug( "End plugging into the OS service manager." );
+}
+
+void systemService::unplug()
+{
+ Log & log = Log::getLog();
+
+ log.debug( "Start unplugging from the OS service manager." );
+
+ service::unregisterCallback();
+
+ log.debug( "End unplugging from the OS service manager." );
+}
 
 void systemService::startManager()
 {

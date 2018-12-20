@@ -44,7 +44,7 @@ all: hasis
 hasis: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++ -L"/home/joao/workspace/osapi_plus/Release" -L"/home/joao/workspace/osapi/Release" -p -pg -ftest-coverage -fprofile-arcs -o "hasis" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -L../../osapi_plus/Release -L../../../osapi_plus/Release -L../../osapi/Release -L../../../osapi/Release -o "hasis" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

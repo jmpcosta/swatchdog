@@ -26,23 +26,22 @@
 
 class service
 {
+public:
+		// Methods
+		static	void	create();
+		static	void	setState			( bool st	);
+		static	bool	getState			( void    	);
+		static  void	registerCallback	( void		);
+		static  void	unregisterCallback	( void		);
+
 private:
 		// Class variables
 		static bool		state;
 
 		// No instances are to be created
-						service	()	{}
-						~service()  {}
-
-public:
-		// Methods
-		static	void	create();
-		static	void	setState		( bool st	);
-		static	bool	getState		( void    	);
-
-		static	void	signal_handler	( int signo );
-		static  void	set_handlers	( void		);
-
+						service				()	{}
+						~service			()  {}
+		static	void	signal_handler		( int signo );
 };
 
 

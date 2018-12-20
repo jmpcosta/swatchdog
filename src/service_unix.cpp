@@ -70,21 +70,24 @@ bool service::getState( void )
 
 void service::create( void )
 {
- bool		clone	= false;
- Log &		log		= Log::getLog();
+ bool		clone		= false;
+ Log &		log			= Log::getLog();
+ CurrentProcess	& proc	= process::getCurrent();
 
  log.debug( "Entering service::create" );
 
- bool success = CurrentProcess::getInstance().clone( clone );
+ bool success = proc.clone( clone );
  if( ! success )
      log.error( "Cloning process failed" );
 
  // Terminate parent to become Daemon
  if( ! clone )
 	 CurrentProcess::getInstance().terminate( true );
-/*
- setsid();
 
+ if( proc.setSession() )
+	 log.info( "Successfully set myself as Session Leader" );
+
+ /*
      if( chdir("/") != 0 )
          log.warn( "Unable to change to root directory. Errno (%d)", errno );
 
@@ -125,7 +128,7 @@ void service::signal_handler( int signo )
 }
 
 
-void service::set_handlers( void )
+void service::registerCallback( void )
 {
   osapi::signal	sig1( SIGTERM );
   osapi::signal	sig2( SIGCHLD );
@@ -143,5 +146,10 @@ void service::set_handlers( void )
   proc.activateSignals();
 }
 
+
+void service::unregisterCallback( void )
+{
+  process::getCurrent().eraseAllSignals();
+}
 
 #endif		// OS_LINUX
