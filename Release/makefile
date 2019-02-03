@@ -8,7 +8,8 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include src/subdir.mk
+-include code/src/unix/subdir.mk
+-include code/src/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -44,7 +45,7 @@ all: hasis
 hasis: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++ -L../../osapi_plus/Release -L../../../osapi_plus/Release -L../../osapi/Release -L../../../osapi/Release -o "hasis" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -L"${OSAPI_PLUS_DIR}/Release" -L"${OSAPI_DIR}/Release" -o "hasis" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
