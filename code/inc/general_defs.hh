@@ -18,19 +18,23 @@
 //
 // *****************************************************************************************
 
-constexpr const char * SERVICE_NAME	 	= "swatchdog";
-constexpr const char * SERVICE_VERSION 	= "0.1";
+constexpr const char * SERVICE_NAME	 	= "SWatchDog";
+constexpr const char * SERVICE_VERSION 	= "0.2";
 
 constexpr const char * MESSAGE_BOOT	 	= "Booting up Service";
 constexpr const char * MESSAGE_PAUSE	= "Pausing service until new work arrives";
 constexpr const char * MESSAGE_SHUTDOWN	= "Shutting down Service";
-constexpr const char * MESSAGE_STARTMGR	= "Starting HASI Service Manager";
-constexpr const char * MESSAGE_ENDTMGR	= "Started HASI Service Manager";
+constexpr const char * MESSAGE_STARTMGR	= "Starting Service Manager";
+constexpr const char * MESSAGE_ENDTMGR	= "Started Service Manager";
 constexpr const char * MESSAGE_APPOK	= "Successfully started managed application";
 constexpr const char * MESSAGE_APPNOK	= "Failed to start managed application";
 
 // Configuration related definitions
-// - First containers
+
+// - First configuration file name
+constexpr const char * SERVICE_DEFAULT_CONFIGFILE_NAME	= "swatchdog.properties";
+
+// - Next, containers
 constexpr const char * SERVICE_CONTAINER 				= "service";
 constexpr const char * SERVICE_CONTAINER_LOG 			= "log.options";
 constexpr const char * SERVICE_CONTAINER_LOG_OPTIONS 	= "log.options";

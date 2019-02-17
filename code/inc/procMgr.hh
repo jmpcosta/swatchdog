@@ -25,7 +25,7 @@
 #include "osapi.hh"
 
 // Import project headers
-
+#include "templates.hh"
 
 // *****************************************************************************************
 //
@@ -44,37 +44,40 @@ using runner_ptr = std::unique_ptr<osapi::process::runner>;
 //
 // *****************************************************************************************
 
+enum class procState { unconfigured, configured, starting, started, stopping, stopped };
+
 class procMgr
 {
 public:
 		// Constructor & Destructor
-		procMgr	();
-		~procMgr() 	{}
+						procMgr	();
+						~procMgr() 	{}
 
 		// Set configuration information
-		void configure				( string & config	);
-		void unconfigure			( void				);
+		void 			configure				( string & config		);
+		void 			unconfigure				( void					);
 
-		void start					( void				);
-		void stop					( void 				);
+		void 			start					( void					);
+		void 			stop					( void 					);
+		void 			processWork				( void 					);
 
 		// Set Child state
-		void setChildAlive			( bool newState		);
-		bool getChildAlive			( void				) const;
+		void 			setState				( procState newState	);
+		bool			inState					( procState state		);
 
 		// Class methods
-		static void	postMortem		( void				);
-		static void	display_status	( int status		);
+		void			postMortem				( void					);
 
 private:
 		// Methods
-		void configureCallback		( void				);
-		void unconfigureCallback	( void				);
-		void configureApplication	( string & config	);
-
+		void 			configureCallback		( void					);
+		void 			unconfigureCallback		( void					);
+		void 			configureApplication	( string & config		);
+		void 			dumpConfiguration		( void					);
+		const char *	getStateString			( void 					);
 
 		// Variables
-		bool					isChildAlive;
+		stateHolder<procState>	iState;
 		process::plan 			proc;
 		runner_ptr				app;
 };

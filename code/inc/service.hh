@@ -22,6 +22,7 @@
 #include <memory>
 
 // Import project headers
+#include "templates.hh"
 #include "procMgr.hh"
 
 // *****************************************************************************************
@@ -39,21 +40,31 @@ using namespace std;
 //
 // *****************************************************************************************
 
+enum class serviceState { unconfigured, configuring, configured, inService, stopping, stopped };
 
 class Service
 {
 public:
 	// Get singleton instance reference
-	static	Service & 	getService();
+	static	Service & 					getService();
 
 	// Instance methods
-			void				readConfiguration( int argc, char * argv[] );
-			void 				boot();
-			void				startManager();
-			void 				hibernate();
-			void 				shutdown();
-			void				setActive( bool newState );
-			procMgr &			getManager( void );
+			void 						boot( int argc, char * argv[] );
+			void						startManager();
+			void 						hibernate();
+			void 						shutdown();
+
+			void 						setState		( serviceState newState	);
+			bool						inState			( serviceState state	);
+
+			void						processWork		( void					);
+			procMgr &					getManager		( void					);
+
+			// Inline Utility functions to get service state
+			bool						inService() 	{return iState.inState( serviceState::inService);}
+			bool						configured()	{return iState.inState( serviceState::configured );}
+			bool						stopping()		{return iState.inState( serviceState::stopping );}
+			bool						stopped()		{return iState.inState( serviceState::stopped );}
 
 	// delete copy and move constructors and assign operators
 			Service( Service const& ) 				= delete;		// Copy construct
@@ -64,32 +75,34 @@ public:
 private:
 
 	// Instance methods
-								~Service();
-								Service();
-			void				initLog();
-			void				waitForWork();
-			void				secureEnvironment();
-			void				plug();
-			void				unplug();
-			void				confirmRunConditions();
-			void				dumpIdentification();
-			void				createSystem();
+			void						readConfiguration( int argc, char * argv[] );
+
+										~Service() {}
+										Service();
+			void						initLog();
+			void						initDefaultLog();
+
+			void						waitForWork();
+			void						secureEnvironment();
+			void						plug();
+			void						unplug();
+			void						confirmRunConditions();
+			void						dumpIdentification();
+			void						createSystem();
+			const char *				getStateString();
 
 	// Instance Variables
 			// Logging variables
-			const char *		logSource;
-			const char *		logTarget;
-			unique_ptr<char *>  logOptions;
+			const char *				logSource;
+			const char *				logTarget;
+			unique_ptr<char *>  		logOptions;
 
 			// Service variables
-			bool				serviceActive;
-			string				configurationName;
+			stateHolder<serviceState>	iState;
+			string						configurationName;
 
 			// Manager of application
-			procMgr				manager;
-
-			// Synchronizer of this service
-			mutex				serviceMutex;
+			procMgr						manager;
 };
 
 

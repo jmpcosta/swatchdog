@@ -43,9 +43,7 @@ int main( int argc, char * argv[] )
 	 // First, get own service instance
 	 Service & service	= Service::getService();
 
-	 service.readConfiguration( argc, argv );		// Init own configuration
-
-	 service.boot();								// Bootstrap myself
+	 service.boot( argc, argv );					// Bootstrap myself
 
 	 service.startManager();						// Launch the HASI Service Manager
 

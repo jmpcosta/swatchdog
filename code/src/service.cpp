@@ -16,6 +16,7 @@
 // *****************************************************************************************
 
 // Import C++ Standard headers
+#include <filesystem>
 #include <iostream>
 #include <string>
 
@@ -64,46 +65,55 @@ Service & Service::getService()
 Service::Service()
 {
  configurationName	= SERVICE_NAME;
- serviceActive 		= false;
+
+ iState.set( serviceState::unconfigured );
 
  // Set log defaults
  logSource = SERVICE_DEFAULT_LOG_SOURCE;
  logTarget = SERVICE_DEFAULT_LOG_TARGET;
 }
 
-Service::~Service()
-{ serviceActive = false; }
 
+// The next two functions are wrapper functions to set/verify service state
 
-
-void Service::readConfiguration( int argc, char * argv[] )
+void Service::setState( serviceState newState )
 {
- if( argc > 1 )
-   {
-	 string filename( argv[1] );
+ string	msg;
+ Log &	log = Log::getLog();
 
-	 configurationFileParser parser;
-	 parser.import( filename, configurationName );
-  }
+ iState.set( newState );
+
+ msg = "Changing Service state to ";
+ msg += getStateString();
+
+ log.info( msg );
+}
+
+bool Service::inState( serviceState state )
+{
+ return iState.inState( state );
 }
 
 
 
-void Service::boot( void )
+void Service::boot( int argc, char * argv[] )
 {
   Log & log 		= Log::getLog();
 
-  initLog();
+  initDefaultLog();
 
-  dumpIdentification();			// Logs all relevant Service information to the system log
-/*
-  confirmRunConditions();		// Ensures that the system meets the runtime pre-conditions
+  readConfiguration( argc, argv );
 
-  secureEnvironment();			// Sets a secure runtime environment
-*/
+  dumpIdentification();			// Logs all relevant Service information to the default system log
 
-  createSystem();				// Create the System service
-  plug();						// Plug myself to the OS callback mechanisms
+  if( configured() )
+    {
+	  initLog();
+  	  // confirmRunConditions();		// Ensures that the system meets the runtime pre-conditions
+  	  // secureEnvironment();			// Sets a secure runtime environment
+	  createSystem();				// Create the System service
+  	  plug();						// Plug myself to the OS callback mechanisms
+    }
 
   log.info( MESSAGE_BOOT );
 }
@@ -133,8 +143,7 @@ void Service::hibernate()
 {
  Log & log = Log::getLog();
 
- serviceActive = true;
- while( serviceActive )
+ while( inService() )
       {
 	 	log.info( MESSAGE_PAUSE );
 	    waitForWork();
@@ -145,20 +154,16 @@ void Service::shutdown()
 {
  Log & log = Log::getLog();
 
- unplug();
+ unplug();	// from the OS
 
- serviceMutex.unlock();					// Remove lock before shutting down
+ // Stop the managed process
+ manager.stop();
 
  log.info( MESSAGE_SHUTDOWN );
 
  log.close();
 }
 
-
-void Service::setActive( bool newState )
-{
- serviceActive = newState;
-}
 
 
 procMgr & Service::getManager( void )
@@ -174,12 +179,64 @@ procMgr & Service::getManager( void )
 // *****************************************************************************************
 
 
+void Service::initDefaultLog( void )
+{
+ Log & 			log  = Log::getLog();
+
+  try  {
+  	     log.open( SERVICE_DEFAULT_LOG_SOURCE, SERVICE_DEFAULT_LOG_TARGET, (const char**) SERVICE_DEFAULT_LOG_OPTIONS );
+       }
+
+  // If not possible to open log, continue anyway
+  catch( const exception & e )
+       { }
+
+}
+
+
+void Service::readConfiguration( int argc, char * argv[] )
+{
+ Log & 			log  = Log::getLog();
+ string 		filename, logMsg;
+
+ if( argc < 2 )
+	 filename = SERVICE_DEFAULT_CONFIGFILE_NAME;
+ else
+	 filename = argv[1];
+
+ if( ! filesystem::exists( filename ) )
+   {
+	 logMsg = "Service Configuration file doesn't exist: " + filename;
+	 log.error( logMsg );
+	 return;
+   }
+
+ logMsg = "Service Configuration file (" + filename + ") found. Importing configuration.";
+ log.info( logMsg );
+
+ try {
+	 	 configurationFileParser parser;
+	 	 parser.import( filename, configurationName );
+ 	 }
+ catch( const exception & e )
+ 	 {
+	 	log.error( e.what() );
+	 	return;
+ 	 }
+
+ // If reached this far, change service state
+ setState( serviceState::configured );
+}
+
+
+
 
 void Service::initLog( void )
 {
  static char 	warnMsg[ INIT_ERROR_MSG_SIZE + 1 ];
  unsigned int	step = 0;
  Log & 			log  = Log::getLog();
+ string			logMsg;
 
  try {
 	  // Get log source from my configuration
@@ -190,14 +247,14 @@ void Service::initLog( void )
 	  if( ConfigurationProvider::getProvider().getConfiguration( configurationName, & p_conf ) )
 	    {
 		  step++;
-		  // If there is source name provided, use it
+		  // If there is a source name that was provided, use it
 		  if( p_conf->getContainer( SERVICE_CONTAINER_LOG ).getItem( SERVICE_LOG_SOURCE, & p_item ) )
 		    {
 			  step++;
 			  logSource = p_item->getString().c_str();
 		    }
 
-		  // If there is target name provided, use it
+		  // If there is a target name that was provided, use it
 		  step++;
 		  if( p_conf->getContainer( SERVICE_CONTAINER_LOG ).getItem( SERVICE_LOG_TARGET, & p_item ) )
 		    {
@@ -217,7 +274,11 @@ void Service::initLog( void )
        }
 
   try  {
+	  	 // First close the default logger
+	  	 log.close();
+	  	 // Attempt to use the new log settings
   	     log.open( logSource, logTarget, (const char**) SERVICE_DEFAULT_LOG_OPTIONS );
+
 
   	     if( step != 0 ) log.warn( warnMsg );
 
@@ -236,9 +297,18 @@ void Service::initLog( void )
   // If not possible to open log, continue anyway
   catch( const exception & e )
        {
-	  	 cerr << "Error opening log file:" << e.what() << endl;
-       }
+	  	  if( ! Log::isLogAvailable() )	// New log settings failed to open log, use default settings
+	  		  initDefaultLog();
 
+	  	  if( ! Log::isLogAvailable() )
+	  		  return;
+	  	  else							// If we have now a logger, log the error that occurred using the configured settings
+	  	    {
+	  		  logMsg += "Error opening log file:";
+	  		  logMsg += e.what();
+	  		  log.error ( logMsg );
+	  	    }
+       }
 }
 
 
@@ -267,10 +337,24 @@ void Service::waitForWork( void )
 
  process::Current::get().suspend();
 
+ if( inService() )		// Process resumes when OS awakes it
+	 processWork();
+
  log.debug( "Leaving wait for work." );
 }
 
 
+void Service::processWork( void )
+{
+ Log & log = Log::getLog();
+
+ log.debug( "Entering process work." );
+
+ // Delegate to application manager any work received
+ manager.processWork();
+
+ log.debug( "Leaving process work." );
+}
 
 
 
@@ -288,10 +372,21 @@ void Service::secureEnvironment()
 
 
 
-
-/*
-void Service::processNotification()
+const char * Service::getStateString()
 {
+ const char * ptr;
 
+ switch( iState.get() )
+ 	   {
+ 	 	 case 	serviceState::unconfigured:	ptr = "Unconfigured";	break;
+ 	 	 case 	serviceState::configured:	ptr = "Configured";		break;
+ 	 	 case 	serviceState::configuring:	ptr = "Configuring";	break;
+ 	 	 case 	serviceState::inService:	ptr = "inService"; 		break;
+ 	 	 case 	serviceState::stopping:		ptr = "Stopping"; 		break;
+ 	 	 case 	serviceState::stopped:		ptr = "Stopped";	 	break;
+ 	 	 default:							ptr = "Unknown"; 		break;
+ 	   }
+
+ return ptr;
 }
-*/
+

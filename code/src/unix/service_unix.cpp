@@ -50,7 +50,7 @@ using namespace osapi;
 //
 // *****************************************************************************************
 
-
+// Create the OS System Service
 void Service::createSystem( void )
 {
  bool		clone			= false;
@@ -69,19 +69,15 @@ void Service::createSystem( void )
 
  // Clone / child proceeds
  if( proc.setSession() )
+   {
 	 log.info( "Successfully set myself as Session Leader" );
 
- /*
-     if( chdir("/") != 0 )
-         log.warn( "Unable to change to root directory. Errno (%d)", errno );
+	 // Change to a safe directory
 
-
-     umask( S_IWGRP | S_IWOTH );
-
-     if( rc == JMPC_OK )
-         sysRunning = JMPC_TRUE;
+	 // Set the default mask: S_IWGRP | S_IWOTH
+	 setState( serviceState::inService );
    }
-*/
+
  log.debug( "Leaving Service::create"  );
 }
 
@@ -94,7 +90,8 @@ static void termination_handler( int signo )
 
   if( signo == SIGTERM )
     {
-	  Service::getService().setActive( false );
+	  Service::getService().getManager().setState( procState::stopping );
+	  Service::getService().setState( serviceState::stopping );
 	  log.info( "Service Shutdown requested." );
     }
 
