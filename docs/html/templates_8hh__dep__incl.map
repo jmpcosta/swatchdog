@@ -1,0 +1,7 @@
+<map id="code/inc/templates.hh" name="code/inc/templates.hh">
+<area shape="rect" id="node2" href="$proc_mgr_8hh.html" title="code/inc/procMgr.hh" alt="" coords="68,80,208,107"/>
+<area shape="rect" id="node3" href="$service_8hh.html" title="code/inc/service.hh" alt="" coords="179,155,313,181"/>
+<area shape="rect" id="node4" href="$proc_mgr_8cpp.html" title="code/src/procMgr.cpp" alt="" coords="172,229,320,256"/>
+<area shape="rect" id="node5" href="$service_8cpp.html" title="code/src/service.cpp" alt="" coords="5,229,148,256"/>
+<area shape="rect" id="node6" href="$swatchdog_8cpp.html" title="code/src/swatchdog.cpp" alt="" coords="344,229,508,256"/>
+</map>

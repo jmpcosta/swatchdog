@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['readconfiguration',['readConfiguration',['../class_service.html#ae74e1c2d2d30c019da90a6384aee6764',1,'Service']]]
+  ['reset',['reset',['../classstate_holder.html#a1588d87714ff500989448884c2ee3028',1,'stateHolder']]]
 ];

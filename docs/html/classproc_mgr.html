@@ -83,7 +83,6 @@ $(document).ready(function(){initNavTree('classproc_mgr.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classproc_mgr-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">procMgr Class Reference</div>  </div>
@@ -106,17 +105,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab3e9cb894056680f6e49b0374f22d9d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd170a9b528a56ffc713a904082793b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproc_mgr.html#afd170a9b528a56ffc713a904082793b6">stop</a> (void)</td></tr>
 <tr class="separator:afd170a9b528a56ffc713a904082793b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4628bb08b6982ebe0a6f6d4b345922eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproc_mgr.html#a4628bb08b6982ebe0a6f6d4b345922eb">setChildAlive</a> (bool newState)</td></tr>
-<tr class="separator:a4628bb08b6982ebe0a6f6d4b345922eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af96134b29f22feed6014a9f9477325d9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproc_mgr.html#af96134b29f22feed6014a9f9477325d9">getChildAlive</a> (void) const</td></tr>
-<tr class="separator:af96134b29f22feed6014a9f9477325d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a5e5c31a79df67b529b830b4c18370355"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproc_mgr.html#a5e5c31a79df67b529b830b4c18370355">postMortem</a> (void)</td></tr>
-<tr class="separator:a5e5c31a79df67b529b830b4c18370355"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af632515cf2d697b7967979683f8006f0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproc_mgr.html#af632515cf2d697b7967979683f8006f0">display_status</a> (int status)</td></tr>
-<tr class="separator:af632515cf2d697b7967979683f8006f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a837ea278b2053e4d9c374688f2d57632"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproc_mgr.html#a837ea278b2053e4d9c374688f2d57632">processWork</a> (void)</td></tr>
+<tr class="separator:a837ea278b2053e4d9c374688f2d57632"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d6672e8a369458065f04631298bfed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproc_mgr.html#ae5d6672e8a369458065f04631298bfed">setState</a> (<a class="el" href="proc_mgr_8hh.html#a05039dd37553158f16c265659120c86c">procState</a> newState)</td></tr>
+<tr class="separator:ae5d6672e8a369458065f04631298bfed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a024a0a2c99097be8406dceb532f0ae3f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproc_mgr.html#a024a0a2c99097be8406dceb532f0ae3f">inState</a> (<a class="el" href="proc_mgr_8hh.html#a05039dd37553158f16c265659120c86c">procState</a> state)</td></tr>
+<tr class="separator:a024a0a2c99097be8406dceb532f0ae3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39563e366b2ce8c5bfd4f9199855feec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproc_mgr.html#a39563e366b2ce8c5bfd4f9199855feec">postMortem</a> (void)</td></tr>
+<tr class="separator:a39563e366b2ce8c5bfd4f9199855feec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5715788ebc9a5e10d2c9ecd1e5e04104"></a>
@@ -180,86 +176,70 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af632515cf2d697b7967979683f8006f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af632515cf2d697b7967979683f8006f0">&#9670;&nbsp;</a></span>display_status()</h2>
+<a id="a024a0a2c99097be8406dceb532f0ae3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a024a0a2c99097be8406dceb532f0ae3f">&#9670;&nbsp;</a></span>inState()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void procMgr::display_status </td>
+          <td class="memname">bool procMgr::inState </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>status</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="proc_mgr_8hh.html#a05039dd37553158f16c265659120c86c">procState</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="af96134b29f22feed6014a9f9477325d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af96134b29f22feed6014a9f9477325d9">&#9670;&nbsp;</a></span>getChildAlive()</h2>
+<a id="a39563e366b2ce8c5bfd4f9199855feec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39563e366b2ce8c5bfd4f9199855feec">&#9670;&nbsp;</a></span>postMortem()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool procMgr::getChildAlive </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5e5c31a79df67b529b830b4c18370355"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e5c31a79df67b529b830b4c18370355">&#9670;&nbsp;</a></span>postMortem()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void procMgr::postMortem </td>
+          <td class="memname">void procMgr::postMortem </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a4628bb08b6982ebe0a6f6d4b345922eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4628bb08b6982ebe0a6f6d4b345922eb">&#9670;&nbsp;</a></span>setChildAlive()</h2>
+<a id="a837ea278b2053e4d9c374688f2d57632"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a837ea278b2053e4d9c374688f2d57632">&#9670;&nbsp;</a></span>processWork()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void procMgr::setChildAlive </td>
+          <td class="memname">void procMgr::processWork </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae5d6672e8a369458065f04631298bfed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5d6672e8a369458065f04631298bfed">&#9670;&nbsp;</a></span>setState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void procMgr::setState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="proc_mgr_8hh.html#a05039dd37553158f16c265659120c86c">procState</a>&#160;</td>
           <td class="paramname"><em>newState</em></td><td>)</td>
           <td></td>
         </tr>

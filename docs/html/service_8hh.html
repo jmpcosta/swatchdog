@@ -82,7 +82,8 @@ $(document).ready(function(){initNavTree('service_8hh.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">service.hh File Reference</div>  </div>
 </div><!--header-->
@@ -90,13 +91,15 @@ $(document).ready(function(){initNavTree('service_8hh.html','');});
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;mutex&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
+<code>#include &quot;<a class="el" href="templates_8hh_source.html">templates.hh</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="proc_mgr_8hh_source.html">procMgr.hh</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for service.hh:</div>
 <div class="dyncontent">
 <div class="center"><img src="service_8hh__incl.png" border="0" usemap="#code_2inc_2service_8hh" alt=""/></div>
 <map name="code_2inc_2service_8hh" id="code_2inc_2service_8hh">
-<area shape="rect" id="node5" href="proc_mgr_8hh.html" title="procMgr.hh" alt="" coords="121,80,208,107"/>
+<area shape="rect" id="node5" href="templates_8hh.html" title="templates.hh" alt="" coords="273,155,371,181"/>
+<area shape="rect" id="node7" href="proc_mgr_8hh.html" title="procMgr.hh" alt="" coords="157,80,244,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -104,8 +107,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="service_8hh__dep__incl.png" border="0" usemap="#code_2inc_2service_8hhdep" alt=""/></div>
 <map name="code_2inc_2service_8hhdep" id="code_2inc_2service_8hhdep">
-<area shape="rect" id="node2" href="service_8cpp.html" title="code/src/service.cpp" alt="" coords="5,80,148,107"/>
-<area shape="rect" id="node3" href="swatchdog_8cpp.html" title="code/src/swatchdog.cpp" alt="" coords="172,80,336,107"/>
+<area shape="rect" id="node2" href="proc_mgr_8cpp.html" title="code/src/procMgr.cpp" alt="" coords="5,80,153,107"/>
+<area shape="rect" id="node3" href="service_8cpp.html" title="code/src/service.cpp" alt="" coords="177,80,320,107"/>
+<area shape="rect" id="node4" href="swatchdog_8cpp.html" title="code/src/swatchdog.cpp" alt="" coords="344,80,508,107"/>
 </map>
 </div>
 </div>
@@ -115,7 +119,52 @@ This graph shows which files directly or indirectly include this file:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html">Service</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:aea2515c22265944b094b4be95acc961e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service_8hh.html#aea2515c22265944b094b4be95acc961e">serviceState</a> { <br />
+&#160;&#160;<a class="el" href="service_8hh.html#aea2515c22265944b094b4be95acc961eab4513c5bfa2d983b13d687bc57fffb3c">serviceState::unconfigured</a>, 
+<a class="el" href="service_8hh.html#aea2515c22265944b094b4be95acc961ea2a69a9b2b291895c827768c617b87953">serviceState::configuring</a>, 
+<a class="el" href="service_8hh.html#aea2515c22265944b094b4be95acc961ea48e54afcf03ca45bfe38f6b7ff58764a">serviceState::configured</a>, 
+<a class="el" href="service_8hh.html#aea2515c22265944b094b4be95acc961eac8415d67daaaddde9b4347e7315b2687">serviceState::inService</a>, 
+<br />
+&#160;&#160;<a class="el" href="service_8hh.html#aea2515c22265944b094b4be95acc961ea3b2a3c8ed19fc3647432e72885d633e7">serviceState::stopping</a>, 
+<a class="el" href="service_8hh.html#aea2515c22265944b094b4be95acc961eaf0a0bfe6bc7d2c58d2989034f83183e0">serviceState::stopped</a>
+<br />
+ }</td></tr>
+<tr class="separator:aea2515c22265944b094b4be95acc961e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="aea2515c22265944b094b4be95acc961e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea2515c22265944b094b4be95acc961e">&#9670;&nbsp;</a></span>serviceState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="service_8hh.html#aea2515c22265944b094b4be95acc961e">serviceState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aea2515c22265944b094b4be95acc961eab4513c5bfa2d983b13d687bc57fffb3c"></a>unconfigured&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aea2515c22265944b094b4be95acc961ea2a69a9b2b291895c827768c617b87953"></a>configuring&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aea2515c22265944b094b4be95acc961ea48e54afcf03ca45bfe38f6b7ff58764a"></a>configured&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aea2515c22265944b094b4be95acc961eac8415d67daaaddde9b4347e7315b2687"></a>inService&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aea2515c22265944b094b4be95acc961ea3b2a3c8ed19fc3647432e72885d633e7"></a>stopping&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aea2515c22265944b094b4be95acc961eaf0a0bfe6bc7d2c58d2989034f83183e0"></a>stopped&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

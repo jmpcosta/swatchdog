@@ -17,6 +17,7 @@ var general__defs_8hh =
     [ "SERVICE_CONTAINER", "general__defs_8hh.html#a4133a20bdcf298297895034c2f0bacc2", null ],
     [ "SERVICE_CONTAINER_LOG", "general__defs_8hh.html#a1b84098265aa2d26617bd8aaa9b380ef", null ],
     [ "SERVICE_CONTAINER_LOG_OPTIONS", "general__defs_8hh.html#ab3bccb941c666d953907957dd9637e7f", null ],
+    [ "SERVICE_DEFAULT_CONFIGFILE_NAME", "general__defs_8hh.html#a22d85493d8c0de36cdcea6de46535f5b", null ],
     [ "SERVICE_LOG_SOURCE", "general__defs_8hh.html#aab9dd808175e9b1fdb6bc665502cfca9", null ],
     [ "SERVICE_LOG_TARGET", "general__defs_8hh.html#a52b63ad0b9b4848fc375bcb2fc7403b2", null ],
     [ "SERVICE_NAME", "general__defs_8hh.html#a13031eb175af595276d452f62f574ffa", null ],

@@ -83,7 +83,8 @@ $(document).ready(function(){initNavTree('proc_mgr_8hh.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">procMgr.hh File Reference</div>  </div>
 </div><!--header-->
@@ -91,11 +92,13 @@ $(document).ready(function(){initNavTree('proc_mgr_8hh.html','');});
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &quot;osapi.hh&quot;</code><br />
+<code>#include &quot;<a class="el" href="templates_8hh_source.html">templates.hh</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for procMgr.hh:</div>
 <div class="dyncontent">
 <div class="center"><img src="proc_mgr_8hh__incl.png" border="0" usemap="#code_2inc_2proc_mgr_8hh" alt=""/></div>
 <map name="code_2inc_2proc_mgr_8hh" id="code_2inc_2proc_mgr_8hh">
+<area shape="rect" id="node5" href="templates_8hh.html" title="templates.hh" alt="" coords="273,80,371,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -103,10 +106,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="proc_mgr_8hh__dep__incl.png" border="0" usemap="#code_2inc_2proc_mgr_8hhdep" alt=""/></div>
 <map name="code_2inc_2proc_mgr_8hhdep" id="code_2inc_2proc_mgr_8hhdep">
-<area shape="rect" id="node2" href="service_8hh.html" title="code/inc/service.hh" alt="" coords="115,80,249,107"/>
-<area shape="rect" id="node3" href="service_8cpp.html" title="code/src/service.cpp" alt="" coords="5,155,148,181"/>
-<area shape="rect" id="node5" href="proc_mgr_8cpp.html" title="code/src/procMgr.cpp" alt="" coords="273,80,421,107"/>
-<area shape="rect" id="node4" href="swatchdog_8cpp.html" title="code/src/swatchdog.cpp" alt="" coords="172,155,336,181"/>
+<area shape="rect" id="node2" href="service_8hh.html" title="code/inc/service.hh" alt="" coords="192,80,327,107"/>
+<area shape="rect" id="node3" href="proc_mgr_8cpp.html" title="code/src/procMgr.cpp" alt="" coords="5,155,153,181"/>
+<area shape="rect" id="node4" href="service_8cpp.html" title="code/src/service.cpp" alt="" coords="365,155,508,181"/>
+<area shape="rect" id="node5" href="swatchdog_8cpp.html" title="code/src/swatchdog.cpp" alt="" coords="177,155,341,181"/>
 </map>
 </div>
 </div>
@@ -121,6 +124,20 @@ Classes</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:ab30e5c958e08c181eba95c72f5596f02"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="proc_mgr_8hh.html#ab30e5c958e08c181eba95c72f5596f02">runner_ptr</a> = std::unique_ptr&lt; osapi::process::runner &gt;</td></tr>
 <tr class="separator:ab30e5c958e08c181eba95c72f5596f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a05039dd37553158f16c265659120c86c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="proc_mgr_8hh.html#a05039dd37553158f16c265659120c86c">procState</a> { <br />
+&#160;&#160;<a class="el" href="proc_mgr_8hh.html#a05039dd37553158f16c265659120c86cab4513c5bfa2d983b13d687bc57fffb3c">procState::unconfigured</a>, 
+<a class="el" href="proc_mgr_8hh.html#a05039dd37553158f16c265659120c86ca48e54afcf03ca45bfe38f6b7ff58764a">procState::configured</a>, 
+<a class="el" href="proc_mgr_8hh.html#a05039dd37553158f16c265659120c86ca1ee85f6c60017a7f0646ba8dc5824de6">procState::starting</a>, 
+<a class="el" href="proc_mgr_8hh.html#a05039dd37553158f16c265659120c86ca3bebb2f89180b03fa5ae736665f648d9">procState::started</a>, 
+<br />
+&#160;&#160;<a class="el" href="proc_mgr_8hh.html#a05039dd37553158f16c265659120c86ca3b2a3c8ed19fc3647432e72885d633e7">procState::stopping</a>, 
+<a class="el" href="proc_mgr_8hh.html#a05039dd37553158f16c265659120c86caf0a0bfe6bc7d2c58d2989034f83183e0">procState::stopped</a>
+<br />
+ }</td></tr>
+<tr class="separator:a05039dd37553158f16c265659120c86c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ab30e5c958e08c181eba95c72f5596f02"></a>
@@ -134,6 +151,37 @@ Typedefs</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a05039dd37553158f16c265659120c86c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05039dd37553158f16c265659120c86c">&#9670;&nbsp;</a></span>procState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="proc_mgr_8hh.html#a05039dd37553158f16c265659120c86c">procState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a05039dd37553158f16c265659120c86cab4513c5bfa2d983b13d687bc57fffb3c"></a>unconfigured&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a05039dd37553158f16c265659120c86ca48e54afcf03ca45bfe38f6b7ff58764a"></a>configured&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a05039dd37553158f16c265659120c86ca1ee85f6c60017a7f0646ba8dc5824de6"></a>starting&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a05039dd37553158f16c265659120c86ca3bebb2f89180b03fa5ae736665f648d9"></a>started&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a05039dd37553158f16c265659120c86ca3b2a3c8ed19fc3647432e72885d633e7"></a>stopping&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a05039dd37553158f16c265659120c86caf0a0bfe6bc7d2c58d2989034f83183e0"></a>stopped&#160;</td><td class="fielddoc"></td></tr>
+</table>
 
 </div>
 </div>
