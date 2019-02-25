@@ -29,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SWATCHDOG
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.3</span>
    </div>
    <div id="projectbrief">Service Watchdog</div>
   </td>
@@ -90,33 +90,48 @@ $(document).ready(function(){initNavTree('class_service.html','');});
 </div><!--header-->
 <div class="contents">
 
+<p>Class that models a system service.  
+ <a href="class_service.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="service_8hh_source.html">service.hh</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abb19ebe1d720f6d0f4e7b360bdbf3b2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#abb19ebe1d720f6d0f4e7b360bdbf3b2e">boot</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:abb19ebe1d720f6d0f4e7b360bdbf3b2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bootstrap the service.  <a href="#abb19ebe1d720f6d0f4e7b360bdbf3b2e">More...</a><br /></td></tr>
 <tr class="separator:abb19ebe1d720f6d0f4e7b360bdbf3b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a066b6113f33d90451adf3da3627c5958"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a066b6113f33d90451adf3da3627c5958">startManager</a> ()</td></tr>
+<tr class="memdesc:a066b6113f33d90451adf3da3627c5958"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the manager of the application.  <a href="#a066b6113f33d90451adf3da3627c5958">More...</a><br /></td></tr>
 <tr class="separator:a066b6113f33d90451adf3da3627c5958"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a211d7fe291675c351d1911e7e1b993"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a1a211d7fe291675c351d1911e7e1b993">hibernate</a> ()</td></tr>
+<tr class="memdesc:a1a211d7fe291675c351d1911e7e1b993"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put the service on hold until an event arrives.  <a href="#a1a211d7fe291675c351d1911e7e1b993">More...</a><br /></td></tr>
 <tr class="separator:a1a211d7fe291675c351d1911e7e1b993"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3902d688a7e029c5a1c8fc621edbca0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a3902d688a7e029c5a1c8fc621edbca0c">shutdown</a> ()</td></tr>
+<tr class="memdesc:a3902d688a7e029c5a1c8fc621edbca0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts the service down.  <a href="#a3902d688a7e029c5a1c8fc621edbca0c">More...</a><br /></td></tr>
 <tr class="separator:a3902d688a7e029c5a1c8fc621edbca0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa385985e8536a51221214fa5094f5e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#aaa385985e8536a51221214fa5094f5e5">setState</a> (<a class="el" href="service_8hh.html#aea2515c22265944b094b4be95acc961e">serviceState</a> newState)</td></tr>
+<tr class="memdesc:aaa385985e8536a51221214fa5094f5e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the service state.  <a href="#aaa385985e8536a51221214fa5094f5e5">More...</a><br /></td></tr>
 <tr class="separator:aaa385985e8536a51221214fa5094f5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09ee4fe0f2fd7ed459d8889b080bd824"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a09ee4fe0f2fd7ed459d8889b080bd824">inState</a> (<a class="el" href="service_8hh.html#aea2515c22265944b094b4be95acc961e">serviceState</a> state)</td></tr>
+<tr class="memdesc:a09ee4fe0f2fd7ed459d8889b080bd824"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check the if a state of a service is the given one.  <a href="#a09ee4fe0f2fd7ed459d8889b080bd824">More...</a><br /></td></tr>
 <tr class="separator:a09ee4fe0f2fd7ed459d8889b080bd824"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a788e97c196ebc6cbaa247d5caf11dd54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a788e97c196ebc6cbaa247d5caf11dd54">processWork</a> (void)</td></tr>
+<tr class="memdesc:a788e97c196ebc6cbaa247d5caf11dd54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process any awake event received by the OS.  <a href="#a788e97c196ebc6cbaa247d5caf11dd54">More...</a><br /></td></tr>
 <tr class="separator:a788e97c196ebc6cbaa247d5caf11dd54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f18e185317b0aa8c23f1480b32a0d69"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classproc_mgr.html">procMgr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a0f18e185317b0aa8c23f1480b32a0d69">getManager</a> (void)</td></tr>
+<tr class="memdesc:a0f18e185317b0aa8c23f1480b32a0d69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain the reference to the Application Manager.  <a href="#a0f18e185317b0aa8c23f1480b32a0d69">More...</a><br /></td></tr>
 <tr class="separator:a0f18e185317b0aa8c23f1480b32a0d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a7b086ccbd3405f545cb3c27604c33f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a2a7b086ccbd3405f545cb3c27604c33f">inService</a> ()</td></tr>
+<tr class="memdesc:a2a7b086ccbd3405f545cb3c27604c33f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the service state is inService.  <a href="#a2a7b086ccbd3405f545cb3c27604c33f">More...</a><br /></td></tr>
 <tr class="separator:a2a7b086ccbd3405f545cb3c27604c33f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabd0276342196bfbef974e5a391727d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#aabd0276342196bfbef974e5a391727d3">configured</a> ()</td></tr>
+<tr class="memdesc:aabd0276342196bfbef974e5a391727d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the service state is configured.  <a href="#aabd0276342196bfbef974e5a391727d3">More...</a><br /></td></tr>
 <tr class="separator:aabd0276342196bfbef974e5a391727d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc7ff958b5128a4e01b750d9d298c0a5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#adc7ff958b5128a4e01b750d9d298c0a5">stopping</a> ()</td></tr>
+<tr class="memdesc:adc7ff958b5128a4e01b750d9d298c0a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the service state is stopping.  <a href="#adc7ff958b5128a4e01b750d9d298c0a5">More...</a><br /></td></tr>
 <tr class="separator:adc7ff958b5128a4e01b750d9d298c0a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac36619a9d2534abfa0f16f9a4361f17a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#ac36619a9d2534abfa0f16f9a4361f17a">stopped</a> ()</td></tr>
+<tr class="memdesc:ac36619a9d2534abfa0f16f9a4361f17a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the service state is stopped.  <a href="#ac36619a9d2534abfa0f16f9a4361f17a">More...</a><br /></td></tr>
 <tr class="separator:ac36619a9d2534abfa0f16f9a4361f17a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f78158ac1f89bb5dbf4a9af414b7d3c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a7f78158ac1f89bb5dbf4a9af414b7d3c">Service</a> (<a class="el" href="class_service.html">Service</a> const &amp;)=delete</td></tr>
 <tr class="separator:a7f78158ac1f89bb5dbf4a9af414b7d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,9 +145,12 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a6b62d8f75ae8d4e887be05ec9c9e4a67"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_service.html">Service</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a6b62d8f75ae8d4e887be05ec9c9e4a67">getService</a> ()</td></tr>
+<tr class="memdesc:a6b62d8f75ae8d4e887be05ec9c9e4a67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get singleton instance reference.  <a href="#a6b62d8f75ae8d4e887be05ec9c9e4a67">More...</a><br /></td></tr>
 <tr class="separator:a6b62d8f75ae8d4e887be05ec9c9e4a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class that models a system service. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7f78158ac1f89bb5dbf4a9af414b7d3c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7f78158ac1f89bb5dbf4a9af414b7d3c">&#9670;&nbsp;</a></span>Service() <span class="overload">[1/2]</span></h2>
 
@@ -212,6 +230,15 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Bootstrap the service. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">argc</td><td>- The number of the service command line arguments </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">argv</td><td>- The command line arguments </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aabd0276342196bfbef974e5a391727d3"></a>
@@ -237,6 +264,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Check if the service state is configured. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if configured. False otherwise </dd></dl>
+
 </div>
 </div>
 <a id="a0f18e185317b0aa8c23f1480b32a0d69"></a>
@@ -254,6 +284,9 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Obtain the reference to the Application Manager. </p>
+<dl class="section return"><dt>Returns</dt><dd>The manager's reference </dd></dl>
 
 </div>
 </div>
@@ -280,6 +313,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Get singleton instance reference. </p>
+<dl class="section return"><dt>Returns</dt><dd>The service instance </dd></dl>
+
 </div>
 </div>
 <a id="a1a211d7fe291675c351d1911e7e1b993"></a>
@@ -296,6 +332,8 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Put the service on hold until an event arrives. </p>
 
 </div>
 </div>
@@ -322,6 +360,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Check if the service state is inService. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if inService. False otherwise </dd></dl>
+
 </div>
 </div>
 <a id="a09ee4fe0f2fd7ed459d8889b080bd824"></a>
@@ -339,6 +380,15 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Check the if a state of a service is the given one. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>- The service state to query </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if service state matches the current service state. False otherwise </dd></dl>
 
 </div>
 </div>
@@ -410,6 +460,8 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Process any awake event received by the OS. </p>
+
 </div>
 </div>
 <a id="aaa385985e8536a51221214fa5094f5e5"></a>
@@ -428,6 +480,14 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Changes the service state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">newState</td><td>- Changes the service state to a new one </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a3902d688a7e029c5a1c8fc621edbca0c"></a>
@@ -445,6 +505,8 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Shuts the service down. </p>
+
 </div>
 </div>
 <a id="a066b6113f33d90451adf3da3627c5958"></a>
@@ -461,6 +523,8 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Start the manager of the application. </p>
 
 </div>
 </div>
@@ -487,6 +551,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Check if the service state is stopped. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if stopped. False otherwise </dd></dl>
+
 </div>
 </div>
 <a id="adc7ff958b5128a4e01b750d9d298c0a5"></a>
@@ -511,6 +578,9 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Check if the service state is stopping. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if stopping. False otherwise </dd></dl>
 
 </div>
 </div>

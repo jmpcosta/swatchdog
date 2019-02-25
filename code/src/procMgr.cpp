@@ -15,6 +15,7 @@
 // *****************************************************************************************
 
 // Import C++ system headers
+#include <defs.hh>
 #include <iostream>
 #include <memory>
 #include <vector>
@@ -23,7 +24,6 @@
 #include "osapi.hh"
 
 // Import project headers
-#include "general_defs.hh"
 #include "service.hh"
 
 // Import own header
@@ -180,7 +180,7 @@ void procMgr::dumpConfiguration()
  vector<char *>					vec;
  std::vector<char*>::size_type	i;
  Log & 							log		= Log::getLog();
- ConfigurationProvider &		prov	= ConfigurationProvider::getProvider();
+ configuration::Provider &		prov	= configuration::Provider::getProvider();
 
  log.info( "===============================" );
  log.info( "Dump of process information:" );
@@ -222,9 +222,9 @@ void procMgr::dumpConfiguration()
 void procMgr::configureApplication( string & config )
 {
  string	errorMsg;
- Log & log 						= Log::getLog();
- configuration * p_config		= nullptr;
- ConfigurationProvider & prov	= ConfigurationProvider::getProvider();
+ Log & log 									= Log::getLog();
+ configuration::configuration * p_config	= nullptr;
+ configuration::Provider & 		prov		= configuration::Provider::getProvider();
 
  log.info( "Entering configuration of application" );
 
@@ -235,9 +235,9 @@ void procMgr::configureApplication( string & config )
    }
  else
    {
-	 configurationItem * p_item;
+	 configuration::item * p_item;
 
-	 ciContainer & appContainer = p_config->getContainer( APP_CONTAINER_NAME );
+	 configuration::container & appContainer = p_config->getContainer( APP_CONTAINER_NAME );
 
 	 if( ! appContainer.getItem( APP_USER, &p_item ) )
 		 log.error( "Unable to find User Name. Using default User" );
@@ -265,11 +265,11 @@ void procMgr::configureApplication( string & config )
 		 iState.set( procState::configured );		// latter on, moving to this state should be only if binary meets requirements (exists, is executable, etc.
 	   }
 
-	 ciContainer & cmdLineContainer = p_config->getContainer( APP_CONTAINER_CMDLINE );
+	 configuration::container & cmdLineContainer = p_config->getContainer( APP_CONTAINER_CMDLINE );
 	 vector<refConstStr> cmdLine = cmdLineContainer.getStringList();
 	 proc.addCommandLine( cmdLine );
 
-	 ciContainer & envContainer = p_config->getContainer( APP_CONTAINER_ENVIRONMENT );
+	 configuration::container & envContainer = p_config->getContainer( APP_CONTAINER_ENVIRONMENT );
 	 vector<refConstStr> env = envContainer.getStringList();
 	 proc.addEnvironment( env );
 

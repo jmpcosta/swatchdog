@@ -16,6 +16,7 @@
 // *****************************************************************************************
 
 // Import C++ Standard headers
+#include <defs.hh>
 #include <filesystem>
 #include <iostream>
 #include <string>
@@ -24,7 +25,6 @@
 #include "osapi.hh"
 
 // Import project headers
-#include "general_defs.hh"
 #include "platform_defs.hh"
 
 // Import own header
@@ -215,7 +215,7 @@ void Service::readConfiguration( int argc, char * argv[] )
  log.info( logMsg );
 
  try {
-	 	 configurationFileParser parser;
+	 	 configuration::fileParser parser;
 	 	 parser.import( filename, configurationName );
  	 }
  catch( const exception & e )
@@ -241,10 +241,10 @@ void Service::initLog( void )
  try {
 	  // Get log source from my configuration
 	  // conf = ConfigurationProvider::getProvider.getConfiguration( configurationName );
-	  configuration		* p_conf = nullptr;
-	  configurationItem * p_item = nullptr;
+	  configuration::configuration		* p_conf = nullptr;
+	  configuration::item 				* p_item = nullptr;
 
-	  if( ConfigurationProvider::getProvider().getConfiguration( configurationName, & p_conf ) )
+	  if( configuration::Provider::getProvider().getConfiguration( configurationName, & p_conf ) )
 	    {
 		  step++;
 		  // If there is a source name that was provided, use it

@@ -24,7 +24,7 @@
 #include "osapi.hh"
 
 // Import project headers
-#include "general_defs.hh"
+#include <defs.hh>
 #include "service.hh"
 
 // Import own header
