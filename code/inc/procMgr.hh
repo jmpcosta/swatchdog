@@ -25,7 +25,7 @@
 #include "osapi.hh"
 
 // Import project headers
-#include "templates.hh"
+
 
 // *****************************************************************************************
 //

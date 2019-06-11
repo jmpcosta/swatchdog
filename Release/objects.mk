@@ -4,5 +4,5 @@
 
 USER_OBJS :=
 
-LIBS := -losapi -losapi++ -lstdc++fs
+LIBS := -losapi -losapi++
 

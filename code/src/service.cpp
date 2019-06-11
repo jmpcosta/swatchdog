@@ -204,7 +204,7 @@ void Service::readConfiguration( int argc, char * argv[] )
  else
 	 filename = argv[1];
 
- if( ! filesystem::exists( filename ) )
+ if( ! filesystem::element::exists( filename ) )
    {
 	 logMsg = "Service Configuration file doesn't exist: " + filename;
 	 log.error( logMsg );

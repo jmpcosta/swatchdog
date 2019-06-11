@@ -22,7 +22,7 @@
 constexpr const char * SERVICE_NAME	 	= "SWatchDog";
 
 /// @brief Version of the system service
-constexpr const char * SERVICE_VERSION 	= "0.3";
+constexpr const char * SERVICE_VERSION 	= "0.31";
 
 /// @brief Message for service boot
 constexpr const char * MESSAGE_BOOT	 	= "Booting up Service";

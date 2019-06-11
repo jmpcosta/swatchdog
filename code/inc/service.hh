@@ -16,14 +16,17 @@
 //
 // *****************************************************************************************
 
+// Import OSAPI headers
+#include "osapi.hh"
+
 // Import C++ system headers
 #include <string>
 #include <mutex>
 #include <memory>
 
 // Import project headers
-#include "templates.hh"
 #include "procMgr.hh"
+
 
 // *****************************************************************************************
 //
@@ -31,8 +34,11 @@
 //
 // *****************************************************************************************
 
+// Standard C++ library
 using namespace std;
 
+// OSAPI Plus namespace
+using namespace osapi;
 
 // *****************************************************************************************
 //

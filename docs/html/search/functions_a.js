@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unconfigure',['unconfigure',['../classproc_mgr.html#aa205e2b1d5e6f61fd783d1fc4b2e42ca',1,'procMgr']]]
+  ['_7eprocmgr',['~procMgr',['../classproc_mgr.html#af8e720691bd29eb704b371e2cd658127',1,'procMgr']]]
 ];
