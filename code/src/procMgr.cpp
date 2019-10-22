@@ -176,11 +176,10 @@ void procMgr::processWork( void )
 
 void procMgr::dumpConfiguration()
 {
- string							msg;
- vector<char *>					vec;
- std::vector<char*>::size_type	i;
- Log & 							log		= Log::getLog();
- configuration::Provider &		prov	= configuration::Provider::getProvider();
+ string									msg;
+ vector<const char *>					vec;
+ std::vector<const char*>::size_type	i;
+ Log & 									log		= Log::getLog();
 
  log.info( "===============================" );
  log.info( "Dump of process information:" );
@@ -198,7 +197,7 @@ void procMgr::dumpConfiguration()
 
  log.info( "Command line:" );
  log.info( "------------" );
- vec = proc.getCommandLine();
+ proc.getCommandLine( vec );
  for( i = 0; i < vec.size(); i++ )
     {
 	  msg = to_string( i );
@@ -210,7 +209,7 @@ void procMgr::dumpConfiguration()
 
  log.info( "Environment:" );
  log.info( "-----------" );
- vec = proc.getEnvironment();
+ proc.getEnvironment( vec );
  for( i = 0; i < vec.size(); i++ )
 	  log.info( vec[i] );
  log.info( "***********" );
@@ -262,16 +261,21 @@ void procMgr::configureApplication( string & config )
 	   {
 		 const string & str = p_item->getString();
 		 proc.addName( str );
-		 iState.set( procState::configured );		// latter on, moving to this state should be only if binary meets requirements (exists, is executable, etc.
+		 iState.set( procState::configured );		// latter on, moving to this state should be only if binary meets requirements (exists, is executable, etc.)
 	   }
 
-	 configuration::container & cmdLineContainer = p_config->getContainer( APP_CONTAINER_CMDLINE );
-	 vector<refConstStr> cmdLine = cmdLineContainer.getStringList();
-	 proc.addCommandLine( cmdLine );
 
+	 vector<const char *> cmdLine;
+	 vector<const char *> env;
+
+	 configuration::container & cmdLineContainer = p_config->getContainer( APP_CONTAINER_CMDLINE );
 	 configuration::container & envContainer = p_config->getContainer( APP_CONTAINER_ENVIRONMENT );
-	 vector<refConstStr> env = envContainer.getStringList();
+
+	 cmdLineContainer.getStringList( cmdLine );
+	 envContainer.getStringList( env );
+
 	 proc.addEnvironment( env );
+	 proc.addCommandLine( cmdLine );
 
 	 setState( procState::configured );
 
